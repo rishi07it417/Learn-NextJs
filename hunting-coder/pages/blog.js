@@ -24,7 +24,7 @@ const Blog = (props) => {
                 <h2>
                   {blog.title} <span>-&gt;</span>
                 </h2>
-                <p>{blog.content.substring(1,100)}...</p>
+                <p>{blog.metadata}...</p>
               </Link>
             })}
        
@@ -49,7 +49,8 @@ export async function getServerSideProps(context) {
     result : {
       title : "",
       content : "",
-      slug : ""
+      slug : "",
+      metadata : ""
     }
   };
 

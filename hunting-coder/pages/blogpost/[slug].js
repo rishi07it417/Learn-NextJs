@@ -2,8 +2,15 @@ import React,{useState,useEffect} from 'react'
 import {useRouter} from 'next/router'
 import {GetServerSideProps} from 'next'
 
+
+
 const Slug = (props) => {
-    const [blog,setBlog] = useState(props.result);
+
+  const createMarkup = (content) => {
+    return { __html: content };
+ }
+
+  const [blog,setBlog] = useState(props.result);
 
    
 
@@ -14,9 +21,7 @@ const Slug = (props) => {
         <div className="col">
           <div className="h1 d-flex justify-content-center">{blog.title}</div>
           <br></br>
-          <div className='d-flex justify-content-center mx-4 px-5'>
-            {blog.content}
-          </div>
+          <div className='d-flex justify-content-center mx-4 px-5'  dangerouslySetInnerHTML={createMarkup(blog.content) } />
         </div>
       </div>
     </div>

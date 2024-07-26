@@ -1,5 +1,6 @@
 {
     "title":"Blog 1",
+    "metadata": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum assumenda error voluptatum quos hic! Debitis molestias eveniet facilis! Nemo nostrum similique suscipit in officiis sed error non, ducimus magnam illum.",
     "content": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum assumenda error voluptatum quos hic! Debitis molestias eveniet facilis! Nemo nostrum similique suscipit in officiis sed error non, ducimus magnam illum.",
     "slug":"blog1"
 }

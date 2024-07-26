@@ -9,7 +9,7 @@ export default async (req:NextApiRequest, res:NextApiResponse) => {
         const dir = path.resolve('.', dirRelativeFolder);
         const file = req.query.slug ?req.query.slug+".json":"";
         if(file===""){
-            res.status(200).json(JSON.parse("{\"result\":\"no blog found\"}"));
+            res.status(200).json(JSON.parse("{\"result\":\"no data found\"}"));
             return;
         }
         let data: string = await frs.readFile(process.cwd() +  path.join('/', dirRelativeFolder, file), 'utf8');

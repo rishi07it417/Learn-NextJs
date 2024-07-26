@@ -1,28 +1,12 @@
-import React,{useState,useEffect} from "react";
+import React,{useState} from "react";
 import Link from "next/link"
 import styles from "@/styles/Blog.module.css";
+import {GetServerSideProps} from 'next'
 
 
-const blog = () => {
-  const [blogs,setBlogs] = useState([]);
+const Blog = (props) => {
+  const [blogs,setBlogs] = useState(props.result);
 
-  const url = `http://localhost:3000/api`;
-  const fetchData = async () => {
-    try {
-         let data = await fetch(url+'/blogs',{ method: 'get'});
-         let parsedData = await data.json();
-         console.log(parsedData);
-         setBlogs(parsedData.result);
-    } catch (e) {
-      console.log(e);
-    }
-     
-   };
-
-  useEffect(()=>{
-      console.log('inside use effect');
-      fetchData();
-  },[]);
 
   return (
     <>
@@ -54,4 +38,36 @@ const blog = () => {
   );
 };
 
-export default blog;
+
+export async function getServerSideProps(context) {
+
+  const slug = context.query.slug;
+
+
+  const url = `http://localhost:3000/api`;
+  let parsedData = { 
+    result : {
+      title : "",
+      content : "",
+      slug : ""
+    }
+  };
+
+  parsedData = JSON.stringify(parsedData);
+
+  
+    try {
+         const data = await fetch(url+'/blogs',{ method: 'get'});
+         parsedData = await data.json();
+    } catch (e) {
+      console.log(e);
+    }
+     
+
+return {
+  props: parsedData,
+}
+}
+
+
+export default Blog;

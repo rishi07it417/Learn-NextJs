@@ -1,30 +1,11 @@
 import React,{useState,useEffect} from 'react'
 import {useRouter} from 'next/router'
+import {GetServerSideProps} from 'next'
 
-const slug = () => {
-    const router = useRouter();
-    console.log(router.query);
-    const {slug} = router.query;
+const Slug = (props) => {
+    const [blog,setBlog] = useState(props.result);
 
-    const [blog,setBlog] = useState([]);
-
-    const url = `http://localhost:3000/api`;
-    const fetchData = async () => {
-      try {
-           let data = await fetch(url+'/blogItem?slug='+slug,{ method: 'get'});
-           let parsedData = await data.json();
-           console.log(parsedData);
-           setBlog(parsedData.result);
-      } catch (e) {
-        console.log(e);
-      }
-       
-     };
-  
-    useEffect(()=>{
-        console.log('inside use effect');
-        fetchData();
-    },[]);
+   
 
   return (
     <>
@@ -44,4 +25,31 @@ const slug = () => {
   )
 }
 
-export default slug
+export async function getServerSideProps(context) {
+
+    const slug = context.query.slug;
+
+
+    const url = `http://localhost:3000/api`;
+    let parsedData = { 
+      result : {
+        title : "",
+        content : ""
+      }
+    };
+  
+    parsedData = JSON.stringify(parsedData);
+        try {
+           const data = await fetch(url+'/blogItem?slug='+slug,{ method: 'get'});
+           parsedData = await data.json();
+      } catch (e) {
+        console.log(e);
+      }
+       
+ 
+  return {
+    props: parsedData,
+  }
+}
+
+export default Slug

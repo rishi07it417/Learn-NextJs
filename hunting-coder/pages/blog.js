@@ -2,7 +2,9 @@ import React,{useState} from "react";
 import Link from "next/link"
 import styles from "@/styles/Blog.module.css";
 import {GetServerSideProps} from 'next'
-
+import { promises as frs } from 'fs';
+import path from 'path';
+import fs from 'fs';
 
 const Blog = (props) => {
   const [blogs,setBlogs] = useState(props.result);
@@ -38,7 +40,7 @@ const Blog = (props) => {
   );
 };
 
-
+/*
 export async function getServerSideProps(context) {
 
   const slug = context.query.slug;
@@ -69,6 +71,44 @@ return {
   props: parsedData,
 }
 }
+*/
 
+// This function gets called at build time
+export async function getStaticProps(context) {
+  let obj = {
+    result : ""
+  };
+
+  try {
+    const dirRelativeFolder = 'responseJson'
+    const dir = path.resolve('.', dirRelativeFolder);
+    const filenames = fs.readdirSync(dir);
+    
+    let data= [];
+    for (let index = 0; index < filenames.length; index++) {
+      const element = filenames[index];
+
+      const file = await frs.readFile(process.cwd() +  path.join('/', dirRelativeFolder, element), 'utf8');
+      data.push(JSON.parse(file));
+
+    }
+
+    obj = {
+      result : data
+   }
+
+
+} catch (error) {
+    console.log(error);
+    obj = {
+        result : "internal server error"
+    };
+
+}
+
+  return {
+    props: obj
+  }
+}
 
 export default Blog;

@@ -1,9 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import {useRouter} from 'next/router'
 import {GetServerSideProps} from 'next'
-import { promises as frs } from 'fs';
-import path from 'path';
-import fs from 'fs';
+
 
 
 
@@ -13,8 +11,6 @@ const Slug = (props) => {
   const createMarkup = (content) => {
     return { __html: content };
  }
- console.log("cliend side::::::::::::::::::::")
-  console.log(props);
   const [blog,setBlog] = useState(props.result);
 
    
@@ -35,7 +31,7 @@ const Slug = (props) => {
   )
 }
 
-/*
+
 export async function getServerSideProps(context) {
 
     const slug = context.query.slug;
@@ -61,7 +57,9 @@ export async function getServerSideProps(context) {
   return {
     props: parsedData,
   }
-}*/
+}
+
+/*
 
 export async function getStaticPaths() {
 
@@ -131,5 +129,6 @@ console.log(obj);
     props: obj
   }
 }
+  */
 
 export default Slug

@@ -16,6 +16,9 @@
 # production
 /build
 
+#contactQuery
+/contactQuery
+
 # misc
 .DS_Store
 *.pem

@@ -10,16 +10,16 @@ const Navbar = () => {
             <div className="col d-flex justify-content-center">
               <ul className="nav">
                 <li className="nav-item">
-                  <Link className="nav-link" aria-current="page" href="/">Home</Link>
+                  <Link className="nav-link text-success" aria-current="page" href="/">Home</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" href="/about">About</Link>
+                  <Link className="nav-link text-success " href="/about">About</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" href="/blog">Blog</Link>
+                  <Link className="nav-link text-success" href="/blog">Blog</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" href="/contact">Contact</Link>
+                  <Link className="nav-link text-success" href="/contact">Contact</Link>
                 </li>
               </ul>
             </div>

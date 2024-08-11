@@ -2,9 +2,7 @@ import React,{useState} from "react";
 import Link from "next/link"
 import styles from "@/styles/Blog.module.css";
 import {GetServerSideProps} from 'next'
-import { promises as frs } from 'fs';
-import path from 'path';
-import fs from 'fs';
+
 
 const Blog = (props) => {
   const [blogs,setBlogs] = useState(props.result);
@@ -15,17 +13,17 @@ const Blog = (props) => {
       <div className="container">
         <div className="row">
           <div className="col d-flex justify-content-center">
-          <div className={styles.grid}>
+          <div >
             {blogs.map((blog,index)=>{
                 return  <Link
                 key={index}
                 href={"http://localhost:3000/blogpost/"+blog.slug}
-                className={styles.card}
+                className="text-success mx-2"
                 rel="noopener noreferrer"
               >
-                <h2>
+                <h4>
                   {blog.title} <span>-&gt;</span>
-                </h2>
+                </h4>
                 <p>{blog.metadata}...</p>
               </Link>
             })}
@@ -40,7 +38,7 @@ const Blog = (props) => {
   );
 };
 
-/*
+
 export async function getServerSideProps(context) {
 
   const slug = context.query.slug;
@@ -71,7 +69,9 @@ return {
   props: parsedData,
 }
 }
-*/
+
+
+/*
 
 // This function gets called at build time
 export async function getStaticProps(context) {
@@ -110,5 +110,6 @@ export async function getStaticProps(context) {
     props: obj
   }
 }
+*/
 
 export default Blog;

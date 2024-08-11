@@ -41,61 +41,65 @@ export default function Home() {
         </div>
       </div>
 
-        <div className={styles.grid}>
-          <Link
-            href="http://localhost:3000/blogpost/blog1"
-            className={styles.card}
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Blog 1 <span>-&gt;</span>
-            </h2>
-            <p>
-              Blog 1 Info
-            </p>
-          </Link>
+      <div className="container">
+        <div className="row ">
+          <div className="col  d-flex justify-content-center ">
+            <Link
+              href="http://localhost:3000/blogpost/blog1"
+              className="text-success mx-2"
+              rel="noopener noreferrer"
+            >
+              <h4>
+                Blog 1 <span>-&gt;</span>
+              </h4>
+              <p>
+                Blog 1 Info
+              </p>
+            </Link>
+            <Link
+              href="http://localhost:3000/blogpost/blog2"
+              className="text-success mx-2"
+              rel="noopener noreferrer"
+            >
+              <h4>
+                Blog 2 <span>-&gt;</span>
+              </h4>
+              <p>
+                Blog 2 Info
+              </p>
+            </Link>
 
-          <Link
-            href="http://localhost:3000/blogpost/blog2"
-            className={styles.card}
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Blog 2 <span>-&gt;</span>
-            </h2>
-            <p>
-              Blog 2 Info
-            </p>
-          </Link>
+            <Link
+              href="http://localhost:3000/blogpost/blog3"
+              className="text-success mx-2"
+              rel="noopener noreferrer"
+            >
+              <h4>
+                Blog 3 <span>-&gt;</span>
+              </h4>
+              <p>
+                Blog 3 Info
+              </p>
+            </Link>
 
-          <Link
-            href="http://localhost:3000/blogpost/blog3"
-            className={styles.card}
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Blog 3 <span>-&gt;</span>
-            </h2>
-            <p>
-              Blog 3 Info
-            </p>
-          </Link>
-
-          <Link
-            href="http://localhost:3000/blogpost/blog4"
-            className={styles.card}
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Blog 4 <span>-&gt;</span>
-            </h2>
-            <p>
-              Blog 4 Info
-            </p>
-          </Link>
+            <Link
+              href="http://localhost:3000/blogpost/blog4"
+              className="text-success mx-2"
+              rel="noopener noreferrer"
+            >
+              <h4>
+                Blog 4 <span>-&gt;</span>
+              </h4>
+              <p>
+                Blog 4 Info
+              </p>
+            </Link>
 
 
+          </div>
         </div>
+      </div>
+        
       </main>
     </>
   );
